@@ -48,8 +48,8 @@ const songsList = [
 ];
 
 // Initialize variables
-let strtIndex = 0;
-let playAudio = new Audio('./songs/Faded - Alan Walker.mp3');
+let playIndex = 0;
+let playAudio = new Audio(undefined);
 const playBtn = document.getElementById('btnPlay');
 const playProgressBar = document.getElementById('progressBar');
 let gif = document.getElementById('imgPlayGif');
@@ -68,6 +68,7 @@ sngList.forEach((element, index) => {
 // Play/Pause song
 playBtn.addEventListener('click', () => {
     if (playAudio.paused || playAudio.currentTime < 0) {
+        playAudio.src = songsList[playIndex].filePath;
         playAudio.play();
         gif.style.display = 'block';
         sngName.style.display = 'block';
@@ -105,6 +106,7 @@ const play = () => {
 
 Array.from(plyIcn).forEach((element, index) => {
     const filPth = songsList[index].filePath;
+    playIndex = index;
     element.addEventListener('click', (ele) => {
         play();
         ele.target.classList.remove('fa-circle-play');
@@ -118,6 +120,32 @@ Array.from(plyIcn).forEach((element, index) => {
         playBtn.classList.add('fa-circle-pause');
     })
 });
+
+const btnprv = document.getElementById('btnPrev');
+btnprv.addEventListener('click', () => {
+    if (playIndex <= 0)
+        playIndex = 0;
+    else
+        playIndex -= 1;
+    playAudio.src = songsList[playIndex].filePath;
+    playAudio.currentTime = 0;
+    playAudio.play();
+    playBtn.classList.remove('fa-circle-play');
+    playBtn.classList.add('fa-circle-pause');
+})
+
+const btnNxt = document.getElementById('btnNext');
+btnNxt.addEventListener('click', () => {
+    if (playIndex >= 8)
+        playIndex = 0;
+    else
+        playIndex += 1;
+    playAudio.src = songsList[playIndex].filePath;
+    playAudio.currentTime = 0;
+    playAudio.play();
+    playBtn.classList.remove('fa-circle-play');
+    playBtn.classList.add('fa-circle-pause');
+})
 
 
 
