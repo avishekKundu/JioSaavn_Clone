@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Kanit:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+#imgLogo {
+    height: 90px;
+    width: auto;
+    margin-left: 10px;
+}
+
+#logoTitle{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 40px;
+}
+
+.myNavbar {
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.navSection {
+    margin-left: 15px;
+}
+
+#playListSection {
+    min-height: 90vh;
+    display: flex;
+    margin: 20px auto;
+    width: 80%;
+    background-image: url('./images/bckgrndImg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.songList, p {
+    font-family: 'Abel', sans-serif;
+    padding: 10px;
+    color: white;
+}
+
+.playSection {
+    position: sticky;
+    height: 100px;
+    align-items: center;
+    flex-direction: column;
+}
+
+#progressBar {
+    width: 70%;
+    cursor: pointer;
+}
+
+.icons {
+    margin-left: 15px;
+    padding: 10px;
+    display: flex;
+}
+
+.icon-box, i {
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.sngItem {
+    height: 50px;
+    padding: 10px;
+    width: 100%;
+    margin: 0px 36px;
+    justify-content: space-between;
+    align-items: center;
+}
+.imagesList {
+    width: 80px;
+    height: 40px;
+}
+
+.songItemButton {
+    margin-left: 7px;
+    width: 70px;
+}
+
+.songInfo {
+    display: flex;
+    position: absolute;
+    top: 6vh;
+    left: 16vw;
+    font-family: 'Abel', sans-serif;
+}
+
+#imgPlayGif, #imgPlayGif2 {
+    display: none;
+    margin-right: 10px;
+}
+
+.imgePlayGif {
+    display: none;
+    margin-right: 7px;
+}
+
+
+
+
