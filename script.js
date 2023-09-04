@@ -18,6 +18,11 @@ sngList.forEach((element, index) => {
     element.getElementsByClassName('sngName')[0].innerText = songsList[index].name;
 })
 
+playAudio.addEventListener('ended', () => {
+    playAudio.src = songsList[++playIndex].filePath;
+    playAudio.play();
+    document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
+})
 
 // Play/Pause song
 playBtn.addEventListener('click', () => {
@@ -47,8 +52,6 @@ playAudio.addEventListener('timeupdate', () => {
 
 playProgressBar.addEventListener('change', () => {
     playAudio.currentTime = (playProgressBar.value * playAudio.duration) / 100;
-    // if (playAudio.currentTime == playAudio.duration)
-    //     console.log('Ready to play next song');
 })
 
 const pause = () => {
