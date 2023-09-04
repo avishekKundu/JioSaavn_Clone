@@ -18,11 +18,13 @@ sngList.forEach((element, index) => {
     element.getElementsByClassName('sngName')[0].innerText = songsList[index].name;
 })
 
-playAudio.addEventListener('ended', () => {
+function chngSong() {
     playAudio.src = songsList[++playIndex].filePath;
     playAudio.play();
     document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
-})
+}
+
+playAudio.addEventListener('ended', chngSong);
 
 // Play/Pause song
 playBtn.addEventListener('click', () => {
