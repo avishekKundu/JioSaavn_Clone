@@ -51,7 +51,7 @@ playProgressBar.addEventListener('change', () => {
     //     console.log('Ready to play next song');
 })
 
-const play = () => {
+const pause = () => {
     Array.from(plyIcn).forEach((element) => {
         element.classList.add('fa-circle-play');
         element.classList.remove('fa-circle-pause');
@@ -61,21 +61,31 @@ const play = () => {
     });
 };
 
+const play = (ele, filPth, i) => {
+    ele.target.classList.remove('fa-circle-play');
+    ele.target.classList.add('fa-circle-pause');
+    playAudio.src = filPth;
+    document.getElementById('imgPlayGif2').innerText = songsList[i].name;
+    playAudio.play();
+    playAudio.currentTime = 0;
+    gif.style.display = 'block';
+    sngName.style.display = 'block';
+    playBtn.classList.remove('fa-circle-play');
+    playBtn.classList.add('fa-circle-pause');
+};
+
 Array.from(plyIcn).forEach((element, index) => {
     const filPth = songsList[index].filePath;
     element.addEventListener('click', (ele) => {
-        play();
-        ele.target.classList.remove('fa-circle-play');
-        ele.target.classList.add('fa-circle-pause');
-        playAudio.src = filPth;
-        playAudio.play();
-        playAudio.currentTime = 0;
-        gif.style.display = 'block';
-        sngName.style.display = 'block';
-        playBtn.classList.remove('fa-circle-play');
-        playBtn.classList.add('fa-circle-pause');
+        if (playAudio.paused) {
+            play(ele, filPth, element.id);
+        }
+        else {
+            pause();
+        }
     })
 });
+
 
 const btnprv = document.getElementById('btnPrev');
 function prevSong() {
