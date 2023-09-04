@@ -92,6 +92,8 @@ playAudio.addEventListener('timeupdate', () => {
 
 playProgressBar.addEventListener('change', () => {
     playAudio.currentTime = (playProgressBar.value * playAudio.duration) / 100;
+    // if (playAudio.currentTime == playAudio.duration)
+    //     console.log('Ready to play next song');
 })
 
 const play = () => {
@@ -122,7 +124,7 @@ Array.from(plyIcn).forEach((element, index) => {
 });
 
 const btnprv = document.getElementById('btnPrev');
-btnprv.addEventListener('click', () => {
+function nextSong() {
     if (playIndex <= 0)
         playIndex = 0;
     else
@@ -132,6 +134,10 @@ btnprv.addEventListener('click', () => {
     playAudio.play();
     playBtn.classList.remove('fa-circle-play');
     playBtn.classList.add('fa-circle-pause');
+}
+
+btnprv.addEventListener('click', () => {
+    nextSong();
 })
 
 const btnNxt = document.getElementById('btnNext');

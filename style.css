@@ -82,6 +82,7 @@ body {
 .imagesList {
     width: 80px;
     height: 40px;
+    border: 4px solid black;
 }
 
 .songItemButton {
@@ -107,6 +108,9 @@ body {
     margin-right: 7px;
 }
 
+.sngName, .songOne {
+    font-weight: bold;
+}
 
 
 
