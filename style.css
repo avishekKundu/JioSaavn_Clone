@@ -112,5 +112,9 @@ body {
     font-weight: bold;
 }
 
+.itemContainer {
+    width: 110%;
+}
+
 
 

@@ -1,51 +1,5 @@
 // List of Array of Songs
-const songsList = [
-    {
-        name: 'Faded',
-        filePath: './songs/Faded - Alan Walker.mp3',
-        coverImg: './images/song1.jpg'
-    },
-    {
-        name: 'On My Way',
-        filePath: './songs/On My Way - Sabrina Carpenter.mp3',
-        coverImg: './images/song2.jpg'
-    },
-    {
-        name: 'Ignite',
-        filePath: './songs/Ignite---Alan-Walker-320.mp3',
-        coverImg: './images/song3.jpg'
-    },
-    {
-        name: 'Alone.Pt.II',
-        filePath: './songs/Alan-Walker-Ava-Max-Alone-Pt-II.mp3',
-        coverImg: './images/song4.jpg'
-    },
-    {
-        name: 'Lily',
-        filePath: './songs/Lily_320.mp3',
-        coverImg: './images/song5.webp'
-    },
-    {
-        name: 'Darkside',
-        filePath: './songs/Darkside.mp3',
-        coverImg: './images/song6.webp'
-    },
-    {
-        name: 'Bones',
-        filePath: './songs/Bones.mp3',
-        coverImg: './images/song7.webp'
-    },
-    {
-        name: 'Sing Me to Sleep',
-        filePath: './songs/Alan_Walker_-_Sing_Me_To_Sleep.mp3',
-        coverImg: './images/song8.png'
-    },
-    {
-        name: 'Paradise',
-        filePath: './songs/Paradise.mp3',
-        coverImg: './images/song9.jpg'
-    }
-];
+import { songsList } from "./songList.js";
 
 // Initialize variables
 let playIndex = 0;
@@ -67,8 +21,9 @@ sngList.forEach((element, index) => {
 
 // Play/Pause song
 playBtn.addEventListener('click', () => {
-    if (playAudio.paused || playAudio.currentTime < 0) {
+    if (playAudio.paused || playAudio.currentTime <= 0) {
         playAudio.src = songsList[playIndex].filePath;
+        document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
         playAudio.play();
         gif.style.display = 'block';
         sngName.style.display = 'block';
@@ -108,7 +63,6 @@ const play = () => {
 
 Array.from(plyIcn).forEach((element, index) => {
     const filPth = songsList[index].filePath;
-    playIndex = index;
     element.addEventListener('click', (ele) => {
         play();
         ele.target.classList.remove('fa-circle-play');
@@ -124,20 +78,21 @@ Array.from(plyIcn).forEach((element, index) => {
 });
 
 const btnprv = document.getElementById('btnPrev');
-function nextSong() {
+function prevSong() {
     if (playIndex <= 0)
-        playIndex = 0;
+        playIndex = 8;
     else
         playIndex -= 1;
     playAudio.src = songsList[playIndex].filePath;
     playAudio.currentTime = 0;
+    document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
     playAudio.play();
     playBtn.classList.remove('fa-circle-play');
     playBtn.classList.add('fa-circle-pause');
 }
 
 btnprv.addEventListener('click', () => {
-    nextSong();
+    prevSong();
 })
 
 const btnNxt = document.getElementById('btnNext');
@@ -148,6 +103,7 @@ btnNxt.addEventListener('click', () => {
         playIndex += 1;
     playAudio.src = songsList[playIndex].filePath;
     playAudio.currentTime = 0;
+    document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
     playAudio.play();
     playBtn.classList.remove('fa-circle-play');
     playBtn.classList.add('fa-circle-pause');
