@@ -24,7 +24,7 @@ function chngSong() {
     document.getElementById('imgPlayGif2').innerText = songsList[playIndex].name;
 }
 
-playAudio.addEventListener('ended', chngSong);
+playAudio.addEventListener('ended', chngSong); 
 
 // Play/Pause song
 playBtn.addEventListener('click', () => {
